@@ -1,4 +1,4 @@
 package structure;
 
-public class game{
+public class Dorf {
 }

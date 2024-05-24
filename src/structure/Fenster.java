@@ -9,14 +9,29 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class fenster extends JFrame {
+public class Fenster extends JFrame {
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    Fenster window = new Fenster();
+                    GamePresenter presenter = new GamePresenter(window);
+                    window.setPresenter(presenter);
+                    window.frame.setVisible(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
 
 
+    public Fenster() { erstelle(); }
 
-
-    public fenster() {
-
-        JPanel startseite = new JPanel();
+    private void erstelle(){
+    JPanel startseite = new JPanel();
         startseite.setPreferredSize(new Dimension(600, 400));
 
 
