@@ -1,6 +1,7 @@
 package structure;
 
 import java.awt.*;
+import java.util.List;
 
 public abstract class DorfObject implements ImageObject{
 
@@ -69,6 +70,7 @@ public abstract class DorfObject implements ImageObject{
 
     }
 
+
     @Override
     public Image getImage() {
         return image;
@@ -76,6 +78,7 @@ public abstract class DorfObject implements ImageObject{
 
 
     public abstract void move();
+
 
 }
 
