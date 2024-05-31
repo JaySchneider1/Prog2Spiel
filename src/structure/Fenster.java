@@ -43,9 +43,10 @@ public class Fenster<listObjects> extends JFrame {
     }
 
 
-    private void erstelle(){
+    private void erstelle() {
         Hauptmenu = new JFrame();
-        Hauptmenu.setBounds(100,100, 617, 300);
+        Hauptmenu.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        Hauptmenu.setResizable(false);
         Hauptmenu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Hauptmenu.setTitle("Hauptmenu");
         //Fenster für das Spiel wird erstellt
@@ -72,12 +73,7 @@ public class Fenster<listObjects> extends JFrame {
         starten.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Hauptmenu.getContentPane().removeAll();
-                Hauptmenu.revalidate();
-                Hauptmenu.repaint();
                 startGame();
-
-
 
 
             }
@@ -85,17 +81,13 @@ public class Fenster<listObjects> extends JFrame {
         });
 
 
-
         JMenuItem zurueck = new JMenuItem("Zurück zum Hauptmenu");
-            zurueck.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    Hauptmenu.getContentPane().removeAll();
-                    Hauptmenu.revalidate();
-                    Hauptmenu.repaint();
-                    zurueckMenu();
-                }
-            });
+        zurueck.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                zurueckMenu();
+            }
+        });
 
 
         JMenuItem beenden = new JMenuItem("Beenden");
@@ -108,7 +100,6 @@ public class Fenster<listObjects> extends JFrame {
         //Fenster wird geschlossen
 
 
-
         JMenuItem pause = new JMenuItem("Pause");
         JMenuItem fortsetzen = new JMenuItem("Fortsetzen");
         JMenuItem neustart = new JMenuItem("Neustart");
@@ -119,13 +110,13 @@ public class Fenster<listObjects> extends JFrame {
             regeln.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    Hauptmenu.getContentPane().removeAll();
-                    Hauptmenu.revalidate();
-                    Hauptmenu.repaint();
                     rules();
-
                 }
             });
+
+
+
+
 
 
 
@@ -152,11 +143,11 @@ public class Fenster<listObjects> extends JFrame {
 
     public void runG(){
         panelDorf = new ListObjects();
-        panelDorf.setBackground(Color.magenta);
         Hauptmenu.add(panelDorf, BorderLayout.CENTER);
         //Wertebereich wird dem Fenster hinzugefügt
         Hauptmenu.add(Leiste, BorderLayout.NORTH);
         //Navigationsleiste wird dem Fenster beigefügt
+
     }
 
 
