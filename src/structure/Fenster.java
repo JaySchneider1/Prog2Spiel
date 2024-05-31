@@ -6,8 +6,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 public class Fenster<listObjects> extends JFrame {
 
@@ -16,6 +14,7 @@ public class Fenster<listObjects> extends JFrame {
     private ListObjects Spiel;
     private ListObjects Spielregeln;
     private ListObjects panelDorf;
+    private JMenuBar Leiste;
 
 
 
@@ -52,8 +51,7 @@ public class Fenster<listObjects> extends JFrame {
         //Fenster für das Spiel wird erstellt
 
 
-
-        JMenuBar Leiste = new JMenuBar();
+        Leiste = new JMenuBar();
         this.setJMenuBar(Leiste);
         //Navigationsleiste wird erstellt
 
@@ -67,19 +65,37 @@ public class Fenster<listObjects> extends JFrame {
         Leiste.add(hilfe);
         //Hauptpunkte werden der Navigationsleiste zugeordnet
 
+
+        runG();
+
         JMenuItem starten = new JMenuItem("Spiel Starten");
         starten.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Spiel = new ListObjects();
-                Spiel.setBackground(Color.magenta);
+                Hauptmenu.getContentPane().removeAll();
+                Hauptmenu.revalidate();
+                Hauptmenu.repaint();
+                startGame();
+
+
+
 
             }
+
         });
 
+
+
         JMenuItem zurueck = new JMenuItem("Zurück zum Hauptmenu");
-            Menu = new ListObjects();
-            Menu.setBackground(Color.CYAN);
+            zurueck.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    Hauptmenu.getContentPane().removeAll();
+                    Hauptmenu.revalidate();
+                    Hauptmenu.repaint();
+                    zurueckMenu();
+                }
+            });
 
 
         JMenuItem beenden = new JMenuItem("Beenden");
@@ -103,12 +119,13 @@ public class Fenster<listObjects> extends JFrame {
             regeln.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                   Spielregeln = new ListObjects();
-                   Spielregeln.setBackground(Color.PINK);
+                    Hauptmenu.getContentPane().removeAll();
+                    Hauptmenu.revalidate();
+                    Hauptmenu.repaint();
+                    rules();
+
                 }
             });
-
-
 
 
 
@@ -124,12 +141,71 @@ public class Fenster<listObjects> extends JFrame {
 
 
 
+
+
+
+
+
+
+    }
+
+
+    public void runG(){
         panelDorf = new ListObjects();
+        panelDorf.setBackground(Color.magenta);
         Hauptmenu.add(panelDorf, BorderLayout.CENTER);
         //Wertebereich wird dem Fenster hinzugefügt
         Hauptmenu.add(Leiste, BorderLayout.NORTH);
         //Navigationsleiste wird dem Fenster beigefügt
+    }
 
+
+    public void startGame(){
+        Hauptmenu.setTitle("Spiel");
+        Hauptmenu.add(Leiste, BorderLayout.NORTH);
+        Spiel = new ListObjects();
+        Hauptmenu.add(Spiel, BorderLayout.CENTER);
+
+    }
+
+    public void zurueckMenu(){
+        Hauptmenu.setTitle("Hauptmenu");
+        Hauptmenu.add(Leiste, BorderLayout.NORTH);
+        Hauptmenu.add(panelDorf, BorderLayout.CENTER);
+    }
+
+    public void rules(){
+        Hauptmenu.setTitle("Spielregeln");
+        Hauptmenu.add(Leiste, BorderLayout.NORTH);
+        Spielregeln = new ListObjects();
+        Spielregeln.setBackground(Color.PINK);
+        Hauptmenu.add(Spielregeln, BorderLayout.CENTER);
+
+
+    }
+
+    public ListObjects getMenu() {
+        return Menu;
+    }
+
+    public void setMenu(ListObjects menu) {
+        Menu = menu;
+    }
+
+    public ListObjects getSpiel() {
+        return Spiel;
+    }
+
+    public void setSpiel(ListObjects spiel) {
+        Spiel = spiel;
+    }
+
+    public ListObjects getSpielregeln() {
+        return Spielregeln;
+    }
+
+    public void setSpielregeln(ListObjects spielregeln) {
+        Spielregeln = spielregeln;
     }
 
     public ListObjects getPanelDorf() {
