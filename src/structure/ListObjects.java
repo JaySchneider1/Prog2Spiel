@@ -21,7 +21,7 @@ public class ListObjects extends JPanel {
             g.drawImage(dorfObject.getImage(), (int) dorfObject.getX(), (int) dorfObject.getY(), null);
         }
 
-        ImageIcon background = new ImageIcon("src/bilder/Background.jpeg");
+        ImageIcon background = new ImageIcon("src/bilder/background.png");
         Image hintergrund = background.getImage();
         g2d.drawImage(hintergrund, 0,0, null);
 
