@@ -61,7 +61,7 @@ public class pigshot {
      */
     private void initialize() {
         frame = new JFrame();
-        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        frame.setBounds(100, 100, 1245, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Hauptmenü");
 
