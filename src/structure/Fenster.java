@@ -12,10 +12,11 @@ import java.awt.event.WindowEvent;
 public class Fenster<listObjects> extends JFrame {
 
     private JFrame Hauptmenu;
-    private JPanel Menu;
-    private JPanel Spiel;
-    private JPanel Spielregeln;
+    private ListObjects Menu;
+    private ListObjects Spiel;
+    private ListObjects Spielregeln;
     private ListObjects panelDorf;
+
 
 
     private GamePresenter presenter;
@@ -70,29 +71,15 @@ public class Fenster<listObjects> extends JFrame {
         starten.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JPanel game = new JPanel();
-                setTitle("Spiel");
-                setLocation(10, 10);
-                setResizable(true);
-                game.setVisible(true);
+                Spiel = new ListObjects();
+                Spiel.setBackground(Color.magenta);
+
             }
         });
-
-
 
         JMenuItem zurueck = new JMenuItem("Zurück zum Hauptmenu");
-        zurueck.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JFrame zurueckMenu = new JFrame();
-                zurueckMenu.setPreferredSize(new Dimension(600, 400));
-                setTitle("Hauptmenu");
-                setVisible(true);
-                setResizable(true);
-            }
-        });
-
-
+            Menu = new ListObjects();
+            Menu.setBackground(Color.CYAN);
 
 
         JMenuItem beenden = new JMenuItem("Beenden");
@@ -102,25 +89,26 @@ public class Fenster<listObjects> extends JFrame {
                 System.exit(0);
             }
         });
+        //Fenster wird geschlossen
 
 
 
         JMenuItem pause = new JMenuItem("Pause");
         JMenuItem fortsetzen = new JMenuItem("Fortsetzen");
         JMenuItem neustart = new JMenuItem("Neustart");
+        //Unterpunkte für die Hauptpunkte der Navigationsleiste
 
 
         JMenuItem regeln = new JMenuItem("Spielregeln");
-        regeln.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JPanel regeln = new JPanel();
-                regeln.setPreferredSize(new Dimension( 600, 400));
-                setTitle("Spielregeln");
-                setVisible(true);
-                setResizable(false);
-            }
-        });
+            regeln.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                   Spielregeln = new ListObjects();
+                   Spielregeln.setBackground(Color.PINK);
+                }
+            });
+
+
 
 
 
@@ -135,10 +123,12 @@ public class Fenster<listObjects> extends JFrame {
         hilfe.add(regeln);
 
 
+
         panelDorf = new ListObjects();
-        panelDorf.setBackground(Color.magenta);
         Hauptmenu.add(panelDorf, BorderLayout.CENTER);
+        //Wertebereich wird dem Fenster hinzugefügt
         Hauptmenu.add(Leiste, BorderLayout.NORTH);
+        //Navigationsleiste wird dem Fenster beigefügt
 
     }
 
