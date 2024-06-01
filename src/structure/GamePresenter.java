@@ -15,7 +15,7 @@ public class GamePresenter{
         this.window = window;
         listObjects = window.getListObjects();
 
-        dorf = new Dorf(100,100);
+        dorf = new Dorf(1245,700);
 
         List<ImageObject> imageObjects = dorf.getdorfObjects();
 
