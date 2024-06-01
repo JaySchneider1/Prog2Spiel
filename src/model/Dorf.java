@@ -1,8 +1,11 @@
 package model;
 
+import kotlin.math.UMathKt;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.lang.Math;
 
 import static model.DorfFactory.createDorfObject;
 
@@ -16,18 +19,19 @@ public class Dorf{
     private Schwein2 schwein2;
     private Schwein3 schwein3;
 
+
     public Dorf(double width, double height){
         this.width = width;
         this.height = height;
 
         // object erzeugen und der Liste hinzufügen
-        schwein1 = (Schwein1) DorfFactory.createDorfObject("Schwein1", "Schwein1", 2, 2, this);
+        schwein1 = (Schwein1) DorfFactory.createDorfObject("Schwein1", "Schwein1", 2, getY(), this);
         dorfObjects.add(schwein1);
 
-        schwein2 = (Schwein2) DorfFactory.createDorfObject("Schwein2", "Schwein2", 200, 200, this);
+        schwein2 = (Schwein2) DorfFactory.createDorfObject("Schwein2", "Schwein2", 200, getY(), this);
         dorfObjects.add(schwein2);
 
-        schwein3 = (Schwein3) DorfFactory.createDorfObject("Schwein3", "Schwein3", 500, 500, this);
+        schwein3 = (Schwein3) DorfFactory.createDorfObject("Schwein3", "Schwein3", 500, getY(), this);
         dorfObjects.add(schwein3);
 
 
@@ -79,5 +83,25 @@ public class Dorf{
 
     public void setSchwein3(Schwein3 schwein3) {
         this.schwein3 = schwein3;
+    }
+    public boolean isObjectInDorf(double x, double y, double width, double height) {
+        if(x > 0 && x + width < this.width && y > 0 && y + height < this.height)
+            return true;
+        else
+            return false;
+    }
+    public void moveAll() {
+        for(DorfObject dorfObject: dorfObjects) {
+            dorfObject.move();
+
+        }
+      //  dorfObjects.removeIf( o -> o.dead);
+    }
+    private double getY(){
+        double a = Math.random() * 1000;
+        if(a < 700 ) {
+            return a;
+        } else return a - 400;
+
     }
 }

@@ -2,9 +2,11 @@ package structure;
 
 
 import model.ImageObject;
+import model.Schwein1;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +16,12 @@ public class ListObjects extends JPanel {
     private List<ImageObject> imageObjects = new ArrayList<>();
 
 
+
     public ListObjects() {
         this.setBackground(Color.BLACK);
+    }
+    public void actionPerformed(ActionEvent e){
+
     }
 
     @Override
@@ -51,5 +57,10 @@ public class ListObjects extends JPanel {
     public void setImageObjects(List<ImageObject> imageObjects) {
         this.imageObjects = imageObjects;
     }
+
+    public List<ImageObject> getImageObjects() {
+        return imageObjects;
+    }
+
 }
 
