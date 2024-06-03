@@ -1,13 +1,12 @@
 package model;
 
-import kotlin.math.UMathKt;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.lang.Math;
 
-import static model.DorfFactory.createDorfObject;
+
 
 public class Dorf{
 
@@ -104,4 +103,5 @@ public class Dorf{
         } else return a - 400;
 
     }
+
 }

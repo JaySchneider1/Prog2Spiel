@@ -5,28 +5,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class pigshot {
 
     private JFrame frame;
-    private JPanel panel;
-    private JPanel panelOceanDimension;
-    private JPanel panelAddOceanObject;
     private ListObjects listObjects;
-    private JLabel lblWidth;
-    private JTextField txtWidth;
-    private JLabel lblHeight;
-    private JTextField textHeight;
-    private JLabel lblType;
-    private JLabel lblName;
-    private JTextField txtName;
-    private JComboBox cbxType;
-    private JButton btnAdd;
-    private JLabel lblX;
-    private JLabel lblY;
-    private JSpinner spinX;
-    private JButton btnOk;
-    private JSpinner spinY;
     private GamePresenter presenter;
     private JMenuBar Leiste;
 
@@ -64,6 +49,7 @@ public class pigshot {
         frame.setBounds(100, 100, 1245, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Hauptmenü");
+        frame.setResizable(false);
 
         Leiste = new JMenuBar();
         frame.setJMenuBar(Leiste);
@@ -104,7 +90,18 @@ public class pigshot {
 
         listObjects = new ListObjects();
         frame.add(listObjects, BorderLayout.CENTER);
-    }
+
+        listObjects.addMouseListener(new MouseAdapter() {
+
+            @Override
+
+            public void mouseClicked(MouseEvent e) {
+
+                System.out.println("Mouse clicked at (" + e.getX() + ", " + e.getY() + ")");
+
+            }
+        });
+    ;}
 
     public ListObjects getListObjects() {
         return listObjects;

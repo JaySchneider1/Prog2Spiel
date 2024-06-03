@@ -18,6 +18,7 @@ public class GamePresenter{
 
     private int counter = 0;
 
+
     public GamePresenter(pigshot window) {
         this.window = window;
         listObjects = window.getListObjects();

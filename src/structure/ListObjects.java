@@ -7,6 +7,8 @@ import model.Schwein1;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +20,21 @@ public class ListObjects extends JPanel {
 
 
     public ListObjects() {
-        this.setBackground(Color.BLACK);
-    }
-    public void actionPerformed(ActionEvent e){
 
+        this.setBackground(Color.BLACK);
+
+        this.addMouseListener(new MouseAdapter() {
+
+            @Override
+
+            public void mouseClicked(MouseEvent e) {
+
+                System.out.println("Mouse clicked at (" + e.getX() + ", " + e.getY() + ")");
+
+
+            }
+
+        });
     }
 
     @Override
@@ -49,6 +62,7 @@ public class ListObjects extends JPanel {
         }
 
     }
+
 
     public List<ImageObject> getImageObjects(Object dorfObjects) {
         return imageObjects;
