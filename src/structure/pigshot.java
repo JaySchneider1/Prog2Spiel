@@ -26,12 +26,14 @@ public class pigshot {
                     pigshot window = new pigshot();
                     GamePresenter presenter = new GamePresenter(window);
                     window.setPresenter(presenter);
+                    window.frame.pack();
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         });
+
     }
 
     /**
@@ -46,7 +48,7 @@ public class pigshot {
      */
     private void initialize() {
         frame = new JFrame();
-        frame.setBounds(100, 100, 1245, 700);
+        //frame.setBounds(100, 100, 1245, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Hauptmenü");
         frame.setResizable(false);
@@ -89,6 +91,7 @@ public class pigshot {
         datei.add(beenden);
 
         listObjects = new ListObjects();
+        listObjects.setPreferredSize(new Dimension(1250,700));
         frame.add(listObjects, BorderLayout.CENTER);
 
         listObjects.addMouseListener(new MouseAdapter() {

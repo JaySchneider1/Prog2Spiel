@@ -25,7 +25,7 @@ public class Schwein1 extends DorfObject{
         }
 
         x = xnew;
-        System.out.println("moved");
+       // System.out.println("moved");
     }
 
 }

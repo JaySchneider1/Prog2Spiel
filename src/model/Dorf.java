@@ -94,13 +94,20 @@ public class Dorf{
             dorfObject.move();
 
         }
-      //  dorfObjects.removeIf( o -> o.dead);
+        dorfObjects.removeIf( o -> o.dead);
+    }
+
+    public void shot(int x, int y){
+        for(DorfObject dorfObject: dorfObjects) {
+            dorfObject.shot(int x, int y);
+
+        }
     }
     private double getY(){
         double a = Math.random() * 1000;
         if(a < 700 ) {
             return a;
-        } else return a - 400;
+        } else return a - 300;
 
     }
 
