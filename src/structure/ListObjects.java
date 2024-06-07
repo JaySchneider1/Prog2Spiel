@@ -7,8 +7,10 @@ import model.Schwein1;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import java.util.List;
 public class ListObjects extends JPanel {
 
     private List<ImageObject> imageObjects = new ArrayList<>();
+
 
 
 
@@ -39,11 +42,16 @@ public class ListObjects extends JPanel {
 
     @Override
 
+
     public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
 
         Graphics2D g2d = (Graphics2D) g;
+
+
+        Dimension size = getSize();
+
 
         Dimension size = getSize();
 
@@ -63,10 +71,15 @@ public class ListObjects extends JPanel {
 
     }
 
+    public List<ImageObject> getImageObjects(Object dorfObjects) {
+        return imageObjects;
+    }
+
 
     public List<ImageObject> getImageObjects(Object dorfObjects) {
         return imageObjects;
     }
+
 
     public void setImageObjects(List<ImageObject> imageObjects) {
         this.imageObjects = imageObjects;

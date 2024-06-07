@@ -8,7 +8,10 @@ public class Schwein1 extends DorfObject{
 
 
     private int direction = 1 ;
+
     public static final double MOVE_DISTANCE = 1.5;
+
+    
 
     public Schwein1(String name, double x, double y, double width, double height, Image image, Dorf dorf) {
         super(name, x, y, width, height, image, dorf);
@@ -25,7 +28,10 @@ public class Schwein1 extends DorfObject{
         }
 
         x = xnew;
+
        // System.out.println("moved");
+
+
     }
 
 }

@@ -5,13 +5,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 
 public class pigshot {
 
     private JFrame frame;
+
     private ListObjects listObjects;
+
     private GamePresenter presenter;
     private JMenuBar Leiste;
 
@@ -26,7 +30,9 @@ public class pigshot {
                     pigshot window = new pigshot();
                     GamePresenter presenter = new GamePresenter(window);
                     window.setPresenter(presenter);
+
                     window.frame.pack();
+
                     window.frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -48,10 +54,12 @@ public class pigshot {
      */
     private void initialize() {
         frame = new JFrame();
+
         //frame.setBounds(100, 100, 1245, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Hauptmenü");
         frame.setResizable(false);
+
 
         Leiste = new JMenuBar();
         frame.setJMenuBar(Leiste);
@@ -91,6 +99,7 @@ public class pigshot {
         datei.add(beenden);
 
         listObjects = new ListObjects();
+
         listObjects.setPreferredSize(new Dimension(1250,700));
         frame.add(listObjects, BorderLayout.CENTER);
 
@@ -105,6 +114,7 @@ public class pigshot {
             }
         });
     ;}
+
 
     public ListObjects getListObjects() {
         return listObjects;

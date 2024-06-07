@@ -17,7 +17,9 @@ public class GamePresenter{
 
     private int counter = 0;
 
+
 //methode shot ergänzen und weiterreichen
+
     public GamePresenter(pigshot window) {
         this.window = window;
         listObjects = window.getListObjects();
@@ -41,10 +43,10 @@ public class GamePresenter{
 
         });
         timer.start();
+
     }
 
 
     public void onGameStart() {
 //testmethode für eine andere Idee
     }
-}

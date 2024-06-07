@@ -1,11 +1,11 @@
 package model;
 
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.lang.Math;
-
 
 
 public class Dorf{
@@ -94,6 +94,7 @@ public class Dorf{
             dorfObject.move();
 
         }
+
         dorfObjects.removeIf( o -> o.dead);
     }
 
@@ -101,14 +102,16 @@ public class Dorf{
         for(DorfObject dorfObject: dorfObjects) {
             dorfObject.shot(int x, int y);
 
-        }
+
     }
     private double getY(){
         double a = Math.random() * 1000;
         if(a < 700 ) {
             return a;
+
         } else return a - 300;
 
     }
+
 
 }
