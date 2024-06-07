@@ -9,6 +9,9 @@ public class DorfObject implements ImageObject{
     private Image image;
     protected Dorf dorf;
 
+    protected boolean dead;
+
+
     public DorfObject(String name, double x, double y, double width, double height, Image image, Dorf dorf){
         super();
         this.name = name;
@@ -20,6 +23,11 @@ public class DorfObject implements ImageObject{
         this.dorf = dorf;
 
     }
+
+    public void shot(int x, int y){
+        //überprüfen liegt x und y in der hitbox, wenn ja dead auf true setzen
+    }
+
 
 
     @Override

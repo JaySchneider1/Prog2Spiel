@@ -13,10 +13,12 @@ public class GamePresenter{
     private ListObjects listObjects;
     private Dorf dorf;
     private Timer timer;
-
     private int frameTime = 10;
 
     private int counter = 0;
+
+
+//methode shot ergänzen und weiterreichen
 
     public GamePresenter(pigshot window) {
         this.window = window;
@@ -41,10 +43,10 @@ public class GamePresenter{
 
         });
         timer.start();
+
     }
 
 
     public void onGameStart() {
 //testmethode für eine andere Idee
-    }
-}
+    }}
