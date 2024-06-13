@@ -4,21 +4,17 @@ import model.Dorf;
 import model.ImageObject;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.List;
 
-
-public class GamePresenter{
+public class GamePresenter {
 
     private pigshot window;
     private ListObjects listObjects;
-    private Dorf dorf;
+    private Dorf dorf; // Deklaration der dorf-Variable
     private Timer timer;
     private int frameTime = 10;
-
-    private int counter = 0;
-
-
-//methode shot ergänzen und weiterreichen
 
     public GamePresenter(pigshot window) {
         this.window = window;
@@ -32,21 +28,25 @@ public class GamePresenter{
 
         listObjects.repaint();
 
+        listObjects.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                int x = e.getX();
+                int y = e.getY();
+                dorf.shot(x, y);
+                listObjects.repaint();
+            }
+        });
+
         timer = new Timer(frameTime, e -> {
-
-            // updateSchwein();
-
             dorf.moveAll();
-
             listObjects.setImageObjects(listObjects.getImageObjects());
             listObjects.repaint();
-
         });
         timer.start();
-
     }
 
-
     public void onGameStart() {
-//testmethode für eine andere Idee
-    }}
+
+    }
+}

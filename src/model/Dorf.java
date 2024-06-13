@@ -8,7 +8,7 @@ import java.util.List;
 import java.lang.Math;
 
 
-public class Dorf{
+public class Dorf {
 
     private double width, height;
 
@@ -19,7 +19,7 @@ public class Dorf{
     private Schwein3 schwein3;
 
 
-    public Dorf(double width, double height){
+    public Dorf(double width, double height) {
         this.width = width;
         this.height = height;
 
@@ -56,10 +56,11 @@ public class Dorf{
         return schwein1;
     }
 
-    public void addDorfObject(DorfObject dorfobject){
+    public void addDorfObject(DorfObject dorfobject) {
         dorfObjects.add(dorfobject);
     }
-    public boolean removeDorfObject(String name){
+
+    public boolean removeDorfObject(String name) {
 
         return true;
     }
@@ -83,35 +84,39 @@ public class Dorf{
     public void setSchwein3(Schwein3 schwein3) {
         this.schwein3 = schwein3;
     }
+
     public boolean isObjectInDorf(double x, double y, double width, double height) {
-        if(x > 0 && x + width < this.width && y > 0 && y + height < this.height)
+        if (x > 0 && x + width < this.width && y > 0 && y + height < this.height)
             return true;
         else
             return false;
     }
+
     public void moveAll() {
-        for(DorfObject dorfObject: dorfObjects) {
+        for (DorfObject dorfObject : dorfObjects) {
             dorfObject.move();
 
         }
 
-        dorfObjects.removeIf( o -> o.dead);
+        dorfObjects.removeIf(o -> o.dead);
     }
 
-    public void shot(int x, int y){
-        for(DorfObject dorfObject: dorfObjects) {
-            dorfObject.shot(int x, int y);
+    public void shot(int x, int y) {
+        for (DorfObject dorfObject : dorfObjects) {
+            dorfObject.shot( x, y);
+
+
+        }
+    }
+        private double getY() {
+            double a = Math.random() * 1000;
+            if (a < 700) {
+                return a;
+
+            } else {
+                return a - 300;
+            }
+        }
 
 
     }
-    private double getY(){
-        double a = Math.random() * 1000;
-        if(a < 700 ) {
-            return a;
-
-        } else return a - 300;
-
-    }
-
-
-}

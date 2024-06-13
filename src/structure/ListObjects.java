@@ -53,7 +53,6 @@ public class ListObjects extends JPanel {
         Dimension size = getSize();
 
 
-        Dimension size = getSize();
 
 
         ImageIcon background = new ImageIcon("src/bilder/background.png");
@@ -76,9 +75,7 @@ public class ListObjects extends JPanel {
     }
 
 
-    public List<ImageObject> getImageObjects(Object dorfObjects) {
-        return imageObjects;
-    }
+
 
 
     public void setImageObjects(List<ImageObject> imageObjects) {
