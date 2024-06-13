@@ -21,9 +21,6 @@ public class pigshot {
             public void run() {
                 try {
                     pigshot window = new pigshot();
-                    GamePresenter presenter = new GamePresenter(window);
-                    window.setPresenter(presenter);
-
                     window.frame.pack();
                     window.frame.setVisible(true);
                 } catch (Exception e) {
@@ -65,7 +62,9 @@ public class pigshot {
                 frame.setTitle("Spiel gestartet");
                 System.out.println("Game started!");
 
-                getPresenter().onGameStart();
+                // Initialize and start the game presenter
+                presenter = new GamePresenter(pigshot.this);
+                presenter.onGameStart();
             }
         });
         JMenuItem beenden = new JMenuItem("Beenden");
@@ -84,10 +83,13 @@ public class pigshot {
         frame.add(listObjects, BorderLayout.CENTER);
 
         listObjects.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                System.out.println("Mouse clicked at (" + e.getX() + ", " + e.getY() + ")");
-            }
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                System.out.println("Mouse clicked at (" + e.getX() + ", " + e.getY() + ")");
+//                if (presenter != null) {
+//                    presenter.onMouseClick(e.getX(), e.getY());
+//                }
+//            }
         });
 
         scoreLeiste = new JLabel("Score: " + score);
