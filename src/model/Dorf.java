@@ -19,13 +19,13 @@ public class Dorf {
         this.height = height;
 
         // object erzeugen und der Liste hinzufügen
-        schwein1 = (Schwein1) DorfFactory.createDorfObject("Schwein1", "Schwein1", 2, getY(), this);
+        schwein1 = (Schwein1) DorfFactory.createDorfObject("Schwein1", "Schwein1", 2, getY(Schwein1.HEIGHT), this);
         dorfObjects.add(schwein1);
 
-        schwein2 = (Schwein2) DorfFactory.createDorfObject("Schwein2", "Schwein2", 200, getY(), this);
+        schwein2 = (Schwein2) DorfFactory.createDorfObject("Schwein2", "Schwein2", 200, getY(Schwein2.HEIGHT), this);
         dorfObjects.add(schwein2);
 
-        schwein3 = (Schwein3) DorfFactory.createDorfObject("Schwein3", "Schwein3", 500, getY(), this);
+        schwein3 = (Schwein3) DorfFactory.createDorfObject("Schwein3", "Schwein3", 500, getY(Schwein3.HEIGHT), this);
         dorfObjects.add(schwein3);
     }
 
@@ -101,7 +101,7 @@ public class Dorf {
 
                 // Resurrect the object at a new random position
                 dorfObject.setX(Math.random() * this.width);
-                dorfObject.setY(getY());
+                dorfObject.setY(getY(dorfObject.getHeight()));
                 dorfObject.dead = false;
                 resurrectedObjects.add(dorfObject);
             }
@@ -120,12 +120,7 @@ public class Dorf {
         }
     }
 
-    private double getY() {
-        double a = Math.random() * 1000;
-        if (a < 700) {
-            return a;
-        } else {
-            return a - 300;
-        }
+    private double getY(double objectHeight) {
+        return Math.random() * (this.height - objectHeight);
     }
 }
