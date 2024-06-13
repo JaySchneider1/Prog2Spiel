@@ -1,6 +1,7 @@
 package structure;
 
 import model.Dorf;
+import model.DorfObject;
 import model.ImageObject;
 
 import javax.swing.*;
@@ -42,11 +43,17 @@ public class GamePresenter {
             dorf.moveAll();
             listObjects.setImageObjects(listObjects.getImageObjects());
             listObjects.repaint();
+            window.updateScore(dorf.getScore()); // Update the score in the window
         });
         timer.start();
     }
 
     public void onGameStart() {
+        // Game start logic
+    }
 
+    public void update() {
+        dorf.moveAll();
+        window.updateScore(dorf.getScore());
     }
 }

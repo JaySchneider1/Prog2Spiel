@@ -2,7 +2,7 @@ package model;
 
 import java.awt.*;
 
-public class DorfObject implements ImageObject {
+public abstract class DorfObject implements ImageObject {
 
     private String name;
     protected double x, y, width, height;
@@ -57,7 +57,6 @@ public class DorfObject implements ImageObject {
         return name;
     }
 
-
     public void move() {
         // Bewegungscode hier
     }
@@ -69,4 +68,6 @@ public class DorfObject implements ImageObject {
     public void setY(double y) {
         this.y = y;
     }
+
+    public abstract int getScoreValue();
 }

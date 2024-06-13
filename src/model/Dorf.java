@@ -1,23 +1,18 @@
 package model;
 
-
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.lang.Math;
 
-
 public class Dorf {
 
     private double width, height;
-
     private List<DorfObject> dorfObjects = new ArrayList<>();
-
     private Schwein1 schwein1;
     private Schwein2 schwein2;
     private Schwein3 schwein3;
-
+    private int score = 0;
 
     public Dorf(double width, double height) {
         this.width = width;
@@ -32,8 +27,6 @@ public class Dorf {
 
         schwein3 = (Schwein3) DorfFactory.createDorfObject("Schwein3", "Schwein3", 500, getY(), this);
         dorfObjects.add(schwein3);
-
-
     }
 
     public double getWidth() {
@@ -61,7 +54,6 @@ public class Dorf {
     }
 
     public boolean removeDorfObject(String name) {
-
         return true;
     }
 
@@ -86,10 +78,15 @@ public class Dorf {
     }
 
     public boolean isObjectInDorf(double x, double y, double width, double height) {
-        if (x > 0 && x + width < this.width && y > 0 && y + height < this.height)
-            return true;
-        else
-            return false;
+        return x > 0 && x + width < this.width && y > 0 && y + height < this.height;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    private void increaseScore(int value) {
+        score += value;
     }
 
     public void moveAll() {
@@ -99,7 +96,10 @@ public class Dorf {
             dorfObject.move();
 
             if (dorfObject.dead) {
+                // Increase score by the specific value of the dead object
+                increaseScore(dorfObject.getScoreValue());
 
+                // Resurrect the object at a new random position
                 dorfObject.setX(Math.random() * this.width);
                 dorfObject.setY(getY());
                 dorfObject.dead = false;
@@ -107,29 +107,25 @@ public class Dorf {
             }
         }
 
-
+        // Remove dead objects from the original list
         dorfObjects.removeIf(o -> o.dead);
 
-
+        // Add resurrected objects back to the list
         dorfObjects.addAll(resurrectedObjects);
     }
 
     public void shot(int x, int y) {
         for (DorfObject dorfObject : dorfObjects) {
-            dorfObject.shot( x, y);
-
-
+            dorfObject.shot(x, y);
         }
     }
-        private double getY() {
-            double a = Math.random() * 1000;
-            if (a < 700) {
-                return a;
 
-            } else {
-                return a - 300;
-            }
+    private double getY() {
+        double a = Math.random() * 1000;
+        if (a < 700) {
+            return a;
+        } else {
+            return a - 300;
         }
-
-
     }
+}
