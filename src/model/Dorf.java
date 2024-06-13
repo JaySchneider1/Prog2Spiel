@@ -93,12 +93,25 @@ public class Dorf {
     }
 
     public void moveAll() {
+        List<DorfObject> resurrectedObjects = new ArrayList<>();
+
         for (DorfObject dorfObject : dorfObjects) {
             dorfObject.move();
 
+            if (dorfObject.dead) {
+
+                dorfObject.setX(Math.random() * this.width);
+                dorfObject.setY(getY());
+                dorfObject.dead = false;
+                resurrectedObjects.add(dorfObject);
+            }
         }
 
+
         dorfObjects.removeIf(o -> o.dead);
+
+
+        dorfObjects.addAll(resurrectedObjects);
     }
 
     public void shot(int x, int y) {
