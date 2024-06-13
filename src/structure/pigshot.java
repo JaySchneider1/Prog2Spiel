@@ -65,6 +65,8 @@ public class pigshot {
                 // Initialize and start the game presenter
                 presenter = new GamePresenter(pigshot.this);
                 presenter.onGameStart();
+                scoreLeiste = new JLabel("Score: " + score);
+                frame.add(scoreLeiste, BorderLayout.SOUTH);
             }
         });
         JMenuItem beenden = new JMenuItem("Beenden");
@@ -92,8 +94,7 @@ public class pigshot {
 //            }
         });
 
-        scoreLeiste = new JLabel("Score: " + score);
-        frame.add(scoreLeiste, BorderLayout.SOUTH);
+
     }
 
     public void updateScore(int newScore) {
