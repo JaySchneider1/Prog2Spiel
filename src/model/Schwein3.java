@@ -4,6 +4,7 @@ import java.awt.*;
 
 public class Schwein3 extends DorfObject{
 
+    public static final double HEIGHT = 26;
     private int direction = 1 ;
     public static final double MOVE_DISTANCE = 0.4;
 
