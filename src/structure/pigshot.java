@@ -18,6 +18,7 @@ public class pigshot {
 
     private GamePresenter presenter;
     private JMenuBar Leiste;
+    private JLabel scoreLeiste;
 
 
     /**
@@ -53,6 +54,9 @@ public class pigshot {
      * Initialize the contents of the frame.
      */
     private void initialize() {
+
+        int score = 0;
+
         frame = new JFrame();
 
         //frame.setBounds(100, 100, 1245, 700);
@@ -113,6 +117,9 @@ public class pigshot {
 
             }
         });
+
+        scoreLeiste = new JLabel("Score: " + score);
+        frame.add(scoreLeiste, BorderLayout.SOUTH);
     ;}
 
 

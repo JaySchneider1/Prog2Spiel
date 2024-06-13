@@ -16,6 +16,7 @@ public class GamePresenter {
     private Timer timer;
     private int frameTime = 10;
 
+
     public GamePresenter(pigshot window) {
         this.window = window;
         listObjects = window.getListObjects();
