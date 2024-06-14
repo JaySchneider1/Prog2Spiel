@@ -20,8 +20,6 @@ public class ListObjects extends JPanel {
     private List<ImageObject> imageObjects = new ArrayList<>();
 
 
-
-
     public ListObjects() {
 
         this.setBackground(Color.BLACK);
@@ -32,7 +30,7 @@ public class ListObjects extends JPanel {
 
             public void mouseClicked(MouseEvent e) {
 
-                System.out.println("Mouse clicked at (" + e.getX() + ", " + e.getY() + ")");
+                //System.out.println("Mouse clicked at (" + e.getX() + ", " + e.getY() + ")");
 
 
             }

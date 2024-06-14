@@ -5,6 +5,7 @@ import model.DorfObject;
 import model.ImageObject;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
@@ -19,10 +20,14 @@ public class GamePresenter {
 
 
     public GamePresenter(pigshot window) {
+
         this.window = window;
         listObjects = window.getListObjects();
 
-        dorf = new Dorf(1245, 700);
+        dorf = new Dorf(1250, 700);
+
+
+
 
         List<ImageObject> imageObjects = dorf.getdorfObjects();
 

@@ -11,6 +11,7 @@ public class pigshot {
 
     private JFrame frame;
     private ListObjects listObjects;
+    private BackObjects backObjects;
     private GamePresenter presenter;
     private JMenuBar Leiste;
     private JLabel scoreLeiste;
@@ -54,21 +55,33 @@ public class pigshot {
         JMenuItem starten = new JMenuItem("Spiel Starten");
         starten.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent eee) {
+                listObjects = new ListObjects();
+                listObjects.setPreferredSize(new Dimension(1250,700));
+                frame.add(listObjects, BorderLayout.CENTER);
+                frame.revalidate();
+
                 startGame();
             }
 
             private void startGame() {
+
                 frame.setTitle("Spiel gestartet");
                 System.out.println("Game started!");
+
 
                 // Initialize and start the game presenter
                 presenter = new GamePresenter(pigshot.this);
                 presenter.onGameStart();
-                scoreLeiste = new JLabel("Score: " + score);
-                frame.add(scoreLeiste, BorderLayout.SOUTH);
+
+
+
+
             }
+
+
         });
+
         JMenuItem beenden = new JMenuItem("Beenden");
         beenden.addActionListener(new ActionListener() {
             @Override
@@ -80,20 +93,13 @@ public class pigshot {
         datei.add(starten);
         datei.add(beenden);
 
-        listObjects = new ListObjects();
-        listObjects.setPreferredSize(new Dimension(1250, 700));
-        frame.add(listObjects, BorderLayout.CENTER);
+        backObjects = new BackObjects();
+        backObjects.setPreferredSize(new Dimension(1250, 700));
+        frame.add(backObjects, BorderLayout.CENTER);
 
-        listObjects.addMouseListener(new MouseAdapter() {
-//            @Override
-//            public void mouseClicked(MouseEvent e) {
-//                System.out.println("Mouse clicked at (" + e.getX() + ", " + e.getY() + ")");
-//                if (presenter != null) {
-//                    presenter.onMouseClick(e.getX(), e.getY());
-//                }
-//            }
-        });
 
+        scoreLeiste = new JLabel("Score: " + score);
+        frame.add(scoreLeiste, BorderLayout.SOUTH);
 
     }
 
