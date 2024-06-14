@@ -93,6 +93,19 @@ public class pigshot {
         datei.add(starten);
         datei.add(beenden);
 
+
+        JMenuItem zurueck = new JMenuItem("Zurück zum Hauptmenu");
+        JMenuItem pause = new JMenuItem("Pause");
+        JMenuItem fortsetzen = new JMenuItem("Fortsetzen");
+
+        optionen.add(zurueck);
+        optionen.add(pause);
+        optionen.add(fortsetzen);
+
+        JMenuItem rules = new JMenuItem("Spielregeln");
+        hilfe.add(rules);
+
+
         backObjects = new BackObjects();
         backObjects.setPreferredSize(new Dimension(1250, 700));
         frame.add(backObjects, BorderLayout.CENTER);
