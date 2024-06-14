@@ -10,12 +10,12 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-public class GamePresenter {
+public class GamePresenter{
 
     private pigshot window;
     private ListObjects listObjects;
     private Dorf dorf; // Deklaration der dorf-Variable
-    private Timer timer;
+    public Timer timer;
     private int frameTime = 10;
 
 
@@ -52,7 +52,11 @@ public class GamePresenter {
             window.updateScore(dorf.getScore()); // Update the score in the window
         });
         timer.start();
+
+
     }
+
+
 
     public void onGameStart() {
         // Game start logic

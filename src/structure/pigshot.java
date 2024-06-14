@@ -6,8 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Timer;
 
-public class pigshot {
+public class pigshot{
 
     private JFrame frame;
     private ListObjects listObjects;
@@ -31,19 +32,22 @@ public class pigshot {
         });
     }
 
-    public pigshot() {
+    public pigshot(){
         initialize();
     }
 
-    private void initialize() {
+    private void initialize(){
+        //Fenster wird erstellt und angepasst
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("Hauptmenü");
         frame.setResizable(false);
 
+        //Navigationsleiste wird erstellt
         Leiste = new JMenuBar();
         frame.setJMenuBar(Leiste);
 
+        //Hauptbutton für Navigationsleiste werden erstellt
         JMenu datei = new JMenu("Datei");
         JMenu optionen = new JMenu("Optionen");
         JMenu hilfe = new JMenu("Hilfe");
@@ -56,11 +60,14 @@ public class pigshot {
         starten.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent eee) {
+
+                //Seite vom Spiel hat einen angepassten anderen Hintergrund
                 listObjects = new ListObjects();
                 listObjects.setPreferredSize(new Dimension(1250,700));
                 frame.add(listObjects, BorderLayout.CENTER);
                 frame.revalidate();
 
+                starten.setVisible(false);
                 startGame();
             }
 
@@ -96,6 +103,12 @@ public class pigshot {
 
         JMenuItem zurueck = new JMenuItem("Zurück zum Hauptmenu");
         JMenuItem pause = new JMenuItem("Pause");
+        pause.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent pause) {
+
+            }
+        });
         JMenuItem fortsetzen = new JMenuItem("Fortsetzen");
 
         optionen.add(zurueck);
@@ -105,7 +118,7 @@ public class pigshot {
         JMenuItem rules = new JMenuItem("Spielregeln");
         hilfe.add(rules);
 
-
+        //Hauptmenu Hintergrund
         backObjects = new BackObjects();
         backObjects.setPreferredSize(new Dimension(1250, 700));
         frame.add(backObjects, BorderLayout.CENTER);
