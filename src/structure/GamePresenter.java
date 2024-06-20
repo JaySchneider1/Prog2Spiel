@@ -1,5 +1,6 @@
 package structure;
 
+import kotlin.jvm.internal.SpreadBuilder;
 import model.Dorf;
 import model.DorfObject;
 import model.ImageObject;
@@ -19,13 +20,13 @@ public class GamePresenter{
     private int frameTime = 10;
 
 
+
     public GamePresenter(pigshot window) {
 
         this.window = window;
         listObjects = window.getListObjects();
 
         dorf = new Dorf(1250, 700);
-
 
 
 
@@ -55,6 +56,7 @@ public class GamePresenter{
 
 
     }
+
 
 
 

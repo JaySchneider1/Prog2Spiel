@@ -1,6 +1,7 @@
 package structure;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +11,7 @@ import java.util.Timer;
 
 public class pigshot{
 
-    private JFrame frame;
+    public JFrame frame;
     private ListObjects listObjects;
     private BackObjects backObjects;
     private GamePresenter presenter;
@@ -32,9 +33,11 @@ public class pigshot{
         });
     }
 
+
     public pigshot(){
         initialize();
     }
+
 
     private void initialize(){
         //Fenster wird erstellt und angepasst
@@ -43,24 +46,31 @@ public class pigshot{
         frame.setTitle("Hauptmenü");
         frame.setResizable(false);
 
+
+        //Hauptmenu Hintergrund
+        backObjects = new BackObjects();
+        backObjects.setPreferredSize(new Dimension(1250, 700));
+        frame.add(backObjects, BorderLayout.CENTER);
+
+
         //Navigationsleiste wird erstellt
         Leiste = new JMenuBar();
         frame.setJMenuBar(Leiste);
 
+
         //Hauptbutton für Navigationsleiste werden erstellt
         JMenu datei = new JMenu("Datei");
-        JMenu optionen = new JMenu("Optionen");
         JMenu hilfe = new JMenu("Hilfe");
-
         Leiste.add(datei);
-        Leiste.add(optionen);
         Leiste.add(hilfe);
 
+
+        //Spiel Starten in der Menuleiste bekommt die Funktion, dass das Spiel gestartet wird
+        //Frame bekommt einen anderen Hintergrund
         JMenuItem starten = new JMenuItem("Spiel Starten");
         starten.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent eee) {
-
+            public void actionPerformed(ActionEvent gamestart) {
                 //Seite vom Spiel hat einen angepassten anderen Hintergrund
                 listObjects = new ListObjects();
                 listObjects.setPreferredSize(new Dimension(1250,700));
@@ -69,69 +79,62 @@ public class pigshot{
 
                 starten.setVisible(false);
                 startGame();
+
             }
 
             private void startGame() {
-
                 frame.setTitle("Spiel gestartet");
                 System.out.println("Game started!");
 
+                //Ein neues Label wird erstellt, wo der Score angezeigt wird
+                scoreLeiste = new JLabel("Score: " + score);
+                scoreLeiste.setOpaque(true);
+                frame.add(scoreLeiste, BorderLayout.SOUTH);
+                frame.revalidate();
+                frame.repaint();
 
                 // Initialize and start the game presenter
                 presenter = new GamePresenter(pigshot.this);
                 presenter.onGameStart();
 
-
-
-
             }
-
-
         });
 
+
+        //Beenden in der Menuleiste bekommt die Funktion das Spiel zu quitten
         JMenuItem beenden = new JMenuItem("Beenden");
         beenden.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent quitgame) {
                 System.exit(0);
             }
         });
-
+        //der Hauptbutton Datei bekommt die Unterpunkte Spiel starten und Beenden zugeordnet
         datei.add(starten);
         datei.add(beenden);
 
 
-        JMenuItem zurueck = new JMenuItem("Zurück zum Hauptmenu");
-        JMenuItem pause = new JMenuItem("Pause");
-        pause.addActionListener(new ActionListener() {
+        //Spielregeln werden erstellt und Hilfe bekommt den Unterpunkt Spielregeln zugeordnet
+        //Spielregeln bekommt die Funktion eine Meldung mit den Regeln anzuzeigen
+        JMenuItem rules = new JMenuItem("Spielregeln");
+        rules.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent pause) {
-
+            public void actionPerformed(ActionEvent rulesgame) {
+                JOptionPane.showMessageDialog(frame, "Willkommen bei Pigshot! Das Spiel Pigshot umfasst die" +
+                        " wichtige Aufgabe, dass Dorf vor der Invasion der Schweine zu retten und die Bewohner zu " +
+                        "schützen. Aber sei gewarnt, die Schweine spüren die Gefahr und werden immer schneller. " +
+                        "Also sei schnell und versuche so viele Schweine, wie möglich abzuschießen!");
+                frame.revalidate();
+                frame.repaint();
             }
         });
-        JMenuItem fortsetzen = new JMenuItem("Fortsetzen");
-
-        optionen.add(zurueck);
-        optionen.add(pause);
-        optionen.add(fortsetzen);
-
-        JMenuItem rules = new JMenuItem("Spielregeln");
         hilfe.add(rules);
 
-        //Hauptmenu Hintergrund
-        backObjects = new BackObjects();
-        backObjects.setPreferredSize(new Dimension(1250, 700));
-        frame.add(backObjects, BorderLayout.CENTER);
-
-
-        scoreLeiste = new JLabel("Score: " + score);
-        frame.add(scoreLeiste, BorderLayout.SOUTH);
 
     }
-
-    public void updateScore(int newScore) {
-        score = newScore;
-        scoreLeiste.setText("Score: " + score);
+        public void updateScore(int newScore) {
+            score = newScore;
+            scoreLeiste.setText("Score: " + score);
     }
 
     public ListObjects getListObjects() {
