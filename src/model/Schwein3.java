@@ -1,33 +1,34 @@
 package model;
 
 import java.awt.*;
-
-public class Schwein3 extends DorfObject{
+//gibt dem schwein größe, geschwindigkeit, richtung
+public class Schwein3 extends DorfObject {
 
     public static final double HEIGHT = 26;
-    private int direction = 1 ;
+    private int direction = 1;
     public static final double MOVE_DISTANCE = 0.4;
 
     public Schwein3(String name, double x, double y, double width, double height, Image image, Dorf dorf) {
         super(name, x, y, width, height, image, dorf);
     }
+
     @Override
     public void move() {
 
         double xnew = x + direction * MOVE_DISTANCE;
 
-        if(!dorf.isObjectInDorf(xnew, y, width, height)) {
+        if (!dorf.isObjectInDorf(xnew, y, width, height)) {
             direction *= -1;
-            xnew = x + direction*MOVE_DISTANCE;
+            xnew = x + direction * MOVE_DISTANCE;
         }
 
         x = xnew;
 
-       // System.out.println("moved");
+        // System.out.println("moved");//überprüfung ob sich das schwein bewegt hat
 
     }
 
     public int getScoreValue() {
-        return 30; // Score value for Schwein3
+        return 30; // Score wert für Schwein3
     }
 }

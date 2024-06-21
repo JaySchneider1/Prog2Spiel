@@ -21,7 +21,7 @@ public class ListObjects extends JPanel {
 
 
     public ListObjects() {
-
+        //setzt den Hintergrund auf schwarz
         this.setBackground(Color.BLACK);
 
         this.addMouseListener(new MouseAdapter() {
@@ -31,7 +31,7 @@ public class ListObjects extends JPanel {
             public void mouseClicked(MouseEvent e) {
 
                 //System.out.println("Mouse clicked at (" + e.getX() + ", " + e.getY() + ")");
-
+                //War eine Methode zum überprüfen ob der mouselistener funktioniert hat, kontrolle über Konsole
 
             }
 
@@ -50,9 +50,7 @@ public class ListObjects extends JPanel {
 
         Dimension size = getSize();
 
-
-
-
+        //malt den Hintergund aus folgender Quelle
         ImageIcon background = new ImageIcon("src/bilder/background.png");
 
         Image hintergrund = background.getImage();
@@ -71,9 +69,6 @@ public class ListObjects extends JPanel {
     public List<ImageObject> getImageObjects(Object dorfObjects) {
         return imageObjects;
     }
-
-
-
 
 
     public void setImageObjects(List<ImageObject> imageObjects) {

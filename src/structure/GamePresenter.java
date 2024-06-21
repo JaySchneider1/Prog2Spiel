@@ -11,7 +11,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.List;
 
-public class GamePresenter{
+public class GamePresenter {
 
     private pigshot window;
     private ListObjects listObjects;
@@ -20,14 +20,12 @@ public class GamePresenter{
     private int frameTime = 10;
 
 
-
     public GamePresenter(pigshot window) {
-
+        //das dorffenster wird erstellt und größentechnisch limitiert
         this.window = window;
         listObjects = window.getListObjects();
 
         dorf = new Dorf(1250, 700);
-
 
 
         List<ImageObject> imageObjects = dorf.getdorfObjects();
@@ -50,7 +48,7 @@ public class GamePresenter{
             dorf.moveAll();
             listObjects.setImageObjects(listObjects.getImageObjects());
             listObjects.repaint();
-            window.updateScore(dorf.getScore()); // Update the score in the window
+            window.updateScore(dorf.getScore()); // Updated den score im fenster, wenn ein schwein getroffen wurde
         });
         timer.start();
 
@@ -58,14 +56,12 @@ public class GamePresenter{
     }
 
 
-
-
     public void onGameStart() {
-        // Game start logic
+        // Spielstart, war urpsrünglich anders gedacht von der Struktur
     }
 
     public void update() {
-        dorf.moveAll();
-        window.updateScore(dorf.getScore());
+        dorf.moveAll();//alles wird bewegt wie angegeben, theoretisch endlos lange
+        window.updateScore(dorf.getScore()); //hierdurch wird das dorf auf veränderung geprüft
     }
 }

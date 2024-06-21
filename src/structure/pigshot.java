@@ -9,7 +9,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Timer;
 
-public class pigshot{
+public class pigshot {
 
     public JFrame frame;
     private ListObjects listObjects;
@@ -17,7 +17,7 @@ public class pigshot{
     private GamePresenter presenter;
     private JMenuBar Leiste;
     private JLabel scoreLeiste;
-    private int score = 0; // Move score to class level
+    private int score = 0;
 
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
@@ -33,13 +33,11 @@ public class pigshot{
         });
     }
 
-
-    public pigshot(){
+    public pigshot() {
         initialize();
     }
 
-
-    private void initialize(){
+    private void initialize() {
         //Fenster wird erstellt und angepasst
         frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -65,7 +63,7 @@ public class pigshot{
         Leiste.add(hilfe);
 
 
-        //Spiel Starten in der Menuleiste bekommt die Funktion, dass das Spiel gestartet wird
+        //"Spiel Starten" in der Menuleiste bekommt die Funktion, dass das Spiel gestartet wird
         //Frame bekommt einen anderen Hintergrund
         JMenuItem starten = new JMenuItem("Spiel Starten");
         starten.addActionListener(new ActionListener() {
@@ -73,7 +71,7 @@ public class pigshot{
             public void actionPerformed(ActionEvent gamestart) {
                 //Seite vom Spiel hat einen angepassten anderen Hintergrund
                 listObjects = new ListObjects();
-                listObjects.setPreferredSize(new Dimension(1250,700));
+                listObjects.setPreferredSize(new Dimension(1250, 700));
                 frame.add(listObjects, BorderLayout.CENTER);
                 frame.revalidate();
 
@@ -93,7 +91,7 @@ public class pigshot{
                 frame.revalidate();
                 frame.repaint();
 
-                // Initialize and start the game presenter
+                // initialisiert und startet den game presenter
                 presenter = new GamePresenter(pigshot.this);
                 presenter.onGameStart();
 
@@ -132,9 +130,10 @@ public class pigshot{
 
 
     }
-        public void updateScore(int newScore) {
-            score = newScore;
-            scoreLeiste.setText("Score: " + score);
+
+    public void updateScore(int newScore) {
+        score = newScore;
+        scoreLeiste.setText("Score: " + score);
     }
 
     public ListObjects getListObjects() {

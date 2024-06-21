@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.lang.Math;
-
+//Haupt-model-klasse, hier läuft ein Großteil zusammen
 public class Dorf {
 
     private double width, height;
@@ -79,7 +79,7 @@ public class Dorf {
 
     public boolean isObjectInDorf(double x, double y, double width, double height) {
         return x > 0 && x + width < this.width && y > 0 && y + height < this.height;
-    }
+    }//prüfung ob das ganze object(höhe,breite) sich in der deklarierten Dorfgröße befindet
 
     public int getScore() {
         return score;
@@ -87,7 +87,7 @@ public class Dorf {
 
     private void increaseScore(int value) {
         score += value;
-    }
+    }//scorerechnung
 
     public void moveAll() {
         List<DorfObject> resurrectedObjects = new ArrayList<>();
@@ -95,11 +95,11 @@ public class Dorf {
         for (DorfObject dorfObject : dorfObjects) {
             dorfObject.move();
 
-            if (dorfObject.dead) {
-                // Increase score by the specific value of the dead object
+            if (dorfObject.dead) {//prüfung ob ein schwein tot ist
+                // der scorer wird hiermit um die festgelegt anzahl an punkten für verschieden schweine erhöht
                 increaseScore(dorfObject.getScoreValue());
 
-                // Resurrect the object at a new random position
+                // Schwein wird an beliebiger stelle wiederbelebt
                 dorfObject.setX(Math.random() * this.width);
                 dorfObject.setY(getY(dorfObject.getHeight()));
                 dorfObject.dead = false;
@@ -107,10 +107,10 @@ public class Dorf {
             }
         }
 
-        // Remove dead objects from the original list
+        // entfernt nach wiederbelebung das tote schwein von der liste, somit ist es nichtz mehr als dead geflaggt
         dorfObjects.removeIf(o -> o.dead);
 
-        // Add resurrected objects back to the list
+
         dorfObjects.addAll(resurrectedObjects);
     }
 

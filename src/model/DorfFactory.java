@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class DorfFactory {
 
-
+    //hier bekommen die schweine ein "Gesicht" zugeteilt und können nun theoretisch auf den Hintergrund gemalt werden
     public static DorfObject createDorfObject(String name, String type, double x, double y, Dorf dorf) {
 
         DorfObject result = null;
@@ -91,7 +91,7 @@ public class DorfFactory {
 
         } catch (IOException e) {
 
-            throw new RuntimeException("Failed to load image: " + path, e);
+            throw new RuntimeException("Failed to load image: " + path, e);//methode um zu überprüfen ob die bilder laden über due console
 
         }
 

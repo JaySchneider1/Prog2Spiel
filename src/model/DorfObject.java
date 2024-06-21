@@ -2,7 +2,7 @@ package model;
 
 import java.awt.*;
 
-public abstract class DorfObject implements ImageObject {
+public abstract class DorfObject implements ImageObject {//implementziert Imageobject
 
     private String name;
     protected double x, y, width, height;
@@ -26,7 +26,7 @@ public abstract class DorfObject implements ImageObject {
     public void shot(int x, int y) {
         // Überprüfen, ob die Koordinaten (x, y) innerhalb des Objekts liegen
         if (x >= this.x && x <= this.x + this.width && y >= this.y && y <= this.y + this.height) {
-            dead = true;
+            dead = true;//wenn ja, wird das schwein als erschossen markiert
         }
     }
 

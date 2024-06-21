@@ -9,12 +9,12 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BackObjects extends JPanel{
+public class BackObjects extends JPanel {
     private List<ImageObject> imageObjects2 = new ArrayList<>();
 
 
     public BackObjects() {
-
+        //Hauptmenür per default schwarz
         this.setBackground(Color.BLACK);
 
 
@@ -32,9 +32,7 @@ public class BackObjects extends JPanel{
 
         Dimension size = getSize();
 
-
-
-
+        //Hauptmenü-Hintergund wird implementiert
         ImageIcon backgroundhome = new ImageIcon("src/bilder/backgroundhome.jpg");
 
         Image hintergrundhome = backgroundhome.getImage();
@@ -54,9 +52,6 @@ public class BackObjects extends JPanel{
     public List<ImageObject> getImageObjects(Object dorfObjects) {
         return imageObjects2;
     }
-
-
-
 
 
     public void setImageObjects(List<ImageObject> imageObjects) {
